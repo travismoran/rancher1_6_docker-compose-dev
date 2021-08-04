@@ -1,6 +1,6 @@
 Host Setup
 
-# patch & install docker, mark docker to prevent upgrade.
+### patch & install docker, mark docker to prevent upgrade.
 ```
 apt-get -y update
 apt-get -y upgrade
@@ -14,12 +14,12 @@ apt upgrade
 shutdown -r now
 ```
 
-# setup .ssh/config and key then clone repo
+### setup .ssh/config and key then clone repo
 ```
 git clone git@bitbucket.org:travis_moran/sg-nginx-rancher-mysql-compose.git
 ```
 
-# fresh setup only steps
+### fresh setup only steps
 ```
 mkdir -p /root/sg-nginx-rancher-mysql-compose/mysql/data
 docker run --name mysql -v /root/sg-nginx-rancher-mysql-compose/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:tag
@@ -31,20 +31,20 @@ GRANT ALL ON cattle.* TO 'cattle'@'localhost' IDENTIFIED BY 'PASSWORD';
 quit;
 ```
 
-# stop and rm mysql container
+### stop and rm mysql container
 
-# launch stack
+### launch stack
 ```
 cd /root/sg-nginx-rancher-mysql-compose/
 docker-compose up -d
 ```
 
-# Once Rancher initializes it will be available on http://<hostip>:8080
+### Once Rancher initializes it will be available on http://<hostip>:8080
 
 # NGINX config included to add SSL currently but not enable, you will have to manually add certs or integrate letsencrypt to the stack
 
-# NGINX -> Edit nginx/build/Dockerfile
-# Replace YOURURLHERE with your domain - www.example.com
+### NGINX -> Edit nginx/build/Dockerfile
+### Replace YOURURLHERE with your domain - www.example.com
 
 ```
 FROM nginx:stable-alpine

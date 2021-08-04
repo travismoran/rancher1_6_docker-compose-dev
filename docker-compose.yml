@@ -21,7 +21,7 @@ services:
     ports:
       - "80:8080"
     restart: always
-    command: "--db-host mysql --db-port 3306 --db-user cattle --db-pass STRONGPW --db-name cattle --advertise-http-port 80"
+    command: "--db-host mysql --db-port 3306 --db-user cattle --db-pass PASSWORD --db-name cattle --advertise-http-port 80"
 
   mysql:
     image: mysql:5.6
@@ -31,7 +31,7 @@ services:
     command: --default-authentication-plugin=mysql_native_password
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: STRONGROOTPW
+      MYSQL_ROOT_PASSWORD: ROOTPASSWORD
     volumes:
       - ./mysql/data/:/var/lib/mysql
 
